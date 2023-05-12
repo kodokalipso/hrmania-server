@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from './Database';
+import { CONNECTION, DatabaseModule } from './Database';
 import { ConfigModule } from './Config';
 import { AppEntity } from './app.entity';
-import { DATABASE_CONNECTION } from './Database/database.provider';
 import { AppDataSource } from './Database/database.source';
 
 @Module({
@@ -14,7 +13,7 @@ import { AppDataSource } from './Database/database.source';
     AppService,
     {
       provide: 'TEST_ENTITY',
-      inject: [DATABASE_CONNECTION],
+      inject: [CONNECTION],
       useFactory: () => AppDataSource.getRepository(AppEntity),
     },
   ],

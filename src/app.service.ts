@@ -1,13 +1,13 @@
 import { DataSource, Repository } from 'typeorm';
 import { Inject, Injectable } from '@nestjs/common';
-import { DATABASE_CONNECTION } from './Database/database.provider';
+import { CONNECTION } from './Database/';
 import { ConfigService } from './Config';
 import { AppEntity } from './app.entity';
 
 @Injectable()
 export class AppService {
   constructor(
-    @Inject(DATABASE_CONNECTION) private ds: DataSource,
+    @Inject(CONNECTION) private ds: DataSource,
     @Inject('TEST_ENTITY') private appRepo: Repository<AppEntity>,
     private configService: ConfigService,
   ) {
