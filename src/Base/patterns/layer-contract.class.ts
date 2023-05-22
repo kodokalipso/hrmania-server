@@ -1,11 +1,12 @@
 import { Nullable, Nullish } from '../types';
 import { isNil } from '@nestjs/common/utils/shared.utils';
 
-export class ContractExeption extends Error {
+class ContractExeption extends Error {
   constructor(msg?: string) {
     super(`ERROR DURING CONTRACT LIFECYCLE \n ${msg ?? 'UNDEFINED MESSAGE'}`);
   }
 }
+
 export class LayerContract<T = unknown> {
   protected statusCode = 1;
   protected statusDescription: Nullish<string>;
