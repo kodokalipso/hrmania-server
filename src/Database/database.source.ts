@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { DataSource } from 'typeorm';
 import { parse } from 'pg-connection-string';
 import dotenv from 'dotenv';
-import { AppEntity } from '../app.entity';
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ export const AppDataSource = new DataSource({
     },
     slaves: [],
   },
-  entities: [AppEntity],
+  entities: [],
   synchronize: false, // ! НИКОГДА НЕ ВКЛЮЧАТЬ ЭТОТ ФЛАГ. ЕСЛИ ТРЕБУЕТСЯ ЧТО-ТО СИНХРОНИЗИРОВАТЬ, ЗАПУСКАЕМ npm run typeorm:sync (+ предварительно npm run typeorm:log, для проверки)
   logging: false,
   ssl: {

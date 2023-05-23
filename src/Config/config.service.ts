@@ -8,11 +8,15 @@ export class ConfigService {
     return parseInt(process.env.PORT, 10) || 4200;
   }
 
-  getUri() {
+  getUri(): string {
     return this.env.PG_URL_MASTER;
   }
 
-  getInitCallback() {
+  getPrefix(): string {
+    return 'api';
+  }
+
+  getInitCallback(): () => void {
     return () => this.loger.log(`listening port: ${this.getPort()}`);
   }
 }
