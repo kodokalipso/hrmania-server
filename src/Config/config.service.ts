@@ -1,4 +1,5 @@
 import { Logger } from '@nestjs/common';
+import { SessionOptions } from 'express-session';
 
 export class ConfigService {
   private loger = new Logger(this.constructor.name);
@@ -18,5 +19,13 @@ export class ConfigService {
 
   getInitCallback(): () => void {
     return () => this.loger.log(`listening port: ${this.getPort()}`);
+  }
+
+  getSessionOptions(): SessionOptions {
+    return {
+      secret: 'my-secret',
+      resave: false,
+      saveUninitialized: false,
+    };
   }
 }
